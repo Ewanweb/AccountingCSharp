@@ -16,6 +16,8 @@ namespace Accounting.App.Customers
 {
     public partial class frmAddOrEditCustomers : Form
     {
+        UnitOfWork db = new UnitOfWork();
+        public int customerID = 0;
         public frmAddOrEditCustomers()
         {
             InitializeComponent();
@@ -50,14 +52,51 @@ namespace Accounting.App.Customers
                    Mobile = txtMobile.Text,
                    Image = ImageName
                 };
-                using (UnitOfWork db = new UnitOfWork()) 
+                try
                 {
-                    db.CustomerRepository.InsertCustomer(customers);
+                    if (customerID == 0)
+                    {
+                        db.CustomerRepository.InsertCustomer(customers);
+                    }
+                    else
+                    {
+                        customers.CustomerID = customerID; // فقط مقداردهی ID
+                        bool updated = db.CustomerRepository.UpdateCustomer(customers);
+                        if (!updated)
+                        {
+                            MessageBox.Show("Update failed.");
+                        }
+                    }
+
                     db.Save();
                     DialogResult = DialogResult.OK;
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+        }
+
+        private void frmAddOrEditCustomers_Load(object sender, EventArgs e)
+        {
+            if (customerID != 0) 
+            {
+                this.Text = "ویرایش شخص";
+                btnSave.Text = "ویرایش";
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    var customer = db.CustomerRepository.GetCustomerById(customerID);
+                    txtEmail.Text = customer.Email;
+                    txtAddress.Text = customer.Address;
+                    txtFullName.Text = customer.FullName;
+                    txtMobile.Text = customer.Mobile;
+                    pictureBox1.ImageLocation = Application.StartupPath + "/Images/" + customer.Image;
+                }
 
             }
+
+            
         }
     }
 }

@@ -68,8 +68,24 @@ namespace Accounting.DataLayer.Services
 
         public bool UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            var local = db.Customers.Local.FirstOrDefault(f => f.CustomerID == customer.CustomerID);
+            if (local != null)
+            {
+                db.Entry(local).State = EntityState.Detached;
+            }
+            try
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges(); // ذخیره تغییرات
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message); // ثبت خطا
+                return false;
+            }
         }
+
 
         public IEnumerable<Customer> GetCustomersByfilter(string parameter)
         {

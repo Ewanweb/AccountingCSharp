@@ -1,13 +1,7 @@
 ﻿using Accounting.App.Customers;
 using Accounting.DataLayer.Context;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Accounting.App
@@ -77,6 +71,20 @@ namespace Accounting.App
             if(frmAdd.ShowDialog() == DialogResult.OK)
             {
                 BindGrid();
+            }
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            if (dgCustomers.CurrentRow != null)
+            {
+                int customerId = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
+                frmAddOrEditCustomers frmAddOrEdit = new frmAddOrEditCustomers();
+                frmAddOrEdit.customerID= customerId;
+                if(frmAddOrEdit.ShowDialog() == DialogResult.OK)
+                {
+                    BindGrid();
+                }
             }
         }
     }
