@@ -49,7 +49,7 @@ namespace Accounting.App
                 using(UnitOfWork db = new UnitOfWork())
                 {
                     string name = dgCustomers.CurrentRow.Cells[1].Value.ToString();
-                    if (RtlMessageBox.Show($"آیا از حذف{name} مطمئن هستید؟", "توجه",MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (RtlMessageBox.Show($"آیا از حذف{name} مطمئن هستید؟", "توجه", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     { 
                         int CustomerId = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
                         db.CustomerRepository.DeleteCustomer(CustomerId);

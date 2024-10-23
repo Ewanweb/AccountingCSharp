@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.ddbSettings = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
+            this.btnNewAccounting = new System.Windows.Forms.ToolStripButton();
+            this.ddbSettings = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -47,19 +48,11 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // ddbSettings
-            // 
-            this.ddbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ddbSettings.Image = ((System.Drawing.Image)(resources.GetObject("ddbSettings.Image")));
-            this.ddbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ddbSettings.Name = "ddbSettings";
-            this.ddbSettings.Size = new System.Drawing.Size(63, 22);
-            this.ddbSettings.Text = "تنظیمات";
-            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCustomers});
+            this.btnCustomers,
+            this.btnNewAccounting});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 62);
@@ -76,6 +69,26 @@
             this.btnCustomers.Text = "طرف حساب";
             this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
+            // 
+            // btnNewAccounting
+            // 
+            this.btnNewAccounting.Image = global::Accounting.App.Properties.Resources._1370791030_credit_card;
+            this.btnNewAccounting.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnNewAccounting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNewAccounting.Name = "btnNewAccounting";
+            this.btnNewAccounting.Size = new System.Drawing.Size(72, 59);
+            this.btnNewAccounting.Text = "تراکنش جدید";
+            this.btnNewAccounting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNewAccounting.Click += new System.EventHandler(this.btnNewAccounting_Click);
+            // 
+            // ddbSettings
+            // 
+            this.ddbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ddbSettings.Image = ((System.Drawing.Image)(resources.GetObject("ddbSettings.Image")));
+            this.ddbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ddbSettings.Name = "ddbSettings";
+            this.ddbSettings.Size = new System.Drawing.Size(63, 22);
+            this.ddbSettings.Text = "تنظیمات";
             // 
             // Form1
             // 
@@ -106,6 +119,7 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripDropDownButton ddbSettings;
+        private System.Windows.Forms.ToolStripButton btnNewAccounting;
     }
 }
 

@@ -13,6 +13,18 @@ namespace Accounting.DataLayer.Context
         Accounting_DBEntities1 db = new Accounting_DBEntities1();
 
         private ICustomerRepository _customerRepository;
+        private GenericRepository<Accounting> _accountingRepository;
+
+        public GenericRepository<Accounting> AccountingRepository {
+            get
+            { 
+                if (_accountingRepository == null)
+                {
+                    _accountingRepository=new GenericRepository<Accounting> (db);
+                }
+                return _accountingRepository;
+            }
+        }
 
         public ICustomerRepository CustomerRepository { 
             get
