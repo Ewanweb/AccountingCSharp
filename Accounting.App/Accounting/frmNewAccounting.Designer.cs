@@ -153,6 +153,11 @@
             // txtAmount
             // 
             this.txtAmount.Location = new System.Drawing.Point(208, 100);
+            this.txtAmount.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(291, 21);
             this.txtAmount.TabIndex = 7;

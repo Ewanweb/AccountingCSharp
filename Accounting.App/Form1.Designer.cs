@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ddbSettings = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewAccounting = new System.Windows.Forms.ToolStripButton();
-            this.ddbSettings = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnReportPay = new System.Windows.Forms.ToolStripButton();
+            this.btnReportRecive = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -48,11 +50,22 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // ddbSettings
+            // 
+            this.ddbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ddbSettings.Image = ((System.Drawing.Image)(resources.GetObject("ddbSettings.Image")));
+            this.ddbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ddbSettings.Name = "ddbSettings";
+            this.ddbSettings.Size = new System.Drawing.Size(63, 22);
+            this.ddbSettings.Text = "تنظیمات";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomers,
-            this.btnNewAccounting});
+            this.btnNewAccounting,
+            this.btnReportPay,
+            this.btnReportRecive});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 62);
@@ -81,14 +94,27 @@
             this.btnNewAccounting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewAccounting.Click += new System.EventHandler(this.btnNewAccounting_Click);
             // 
-            // ddbSettings
+            // btnReportPay
             // 
-            this.ddbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ddbSettings.Image = ((System.Drawing.Image)(resources.GetObject("ddbSettings.Image")));
-            this.ddbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ddbSettings.Name = "ddbSettings";
-            this.ddbSettings.Size = new System.Drawing.Size(63, 22);
-            this.ddbSettings.Text = "تنظیمات";
+            this.btnReportPay.Image = global::Accounting.App.Properties.Resources.servicesCosts;
+            this.btnReportPay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportPay.Name = "btnReportPay";
+            this.btnReportPay.Size = new System.Drawing.Size(97, 59);
+            this.btnReportPay.Text = "گزارش پرداختی ها";
+            this.btnReportPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportPay.Click += new System.EventHandler(this.btnReportPay_Click);
+            // 
+            // btnReportRecive
+            // 
+            this.btnReportRecive.Image = global::Accounting.App.Properties.Resources._1371476276_Print;
+            this.btnReportRecive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportRecive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportRecive.Name = "btnReportRecive";
+            this.btnReportRecive.Size = new System.Drawing.Size(98, 59);
+            this.btnReportRecive.Text = "گزارش دریافتی ها";
+            this.btnReportRecive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportRecive.Click += new System.EventHandler(this.btnReportRecive_Click);
             // 
             // Form1
             // 
@@ -120,6 +146,8 @@
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripDropDownButton ddbSettings;
         private System.Windows.Forms.ToolStripButton btnNewAccounting;
+        private System.Windows.Forms.ToolStripButton btnReportRecive;
+        private System.Windows.Forms.ToolStripButton btnReportPay;
     }
 }
 
