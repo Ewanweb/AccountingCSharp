@@ -38,6 +38,19 @@ namespace Accounting.DataLayer.Context
             }
         }
 
+        private GenericRepository<Login> _loginRepository;
+
+        public GenericRepository<Login> LoginRepository { 
+            get
+            {
+                if(_loginRepository == null)
+                {
+                    _loginRepository = new GenericRepository<Login> (db);
+                }
+                return _loginRepository;
+            } 
+        }
+
         public void Dispose()
         {
             db.Dispose();

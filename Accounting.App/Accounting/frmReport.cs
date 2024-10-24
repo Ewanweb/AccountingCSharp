@@ -1,11 +1,13 @@
 ﻿using Accounting.DataLayer;
 using Accounting.DataLayer.Context;
 using Accounting.Utility.Convertor;
+using Accounting.ViewModels.Customers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,20 @@ namespace Accounting.App
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+            using(UnitOfWork db =new UnitOfWork())
+            {
+                List<ListCustomerViewModel> list = new List<ListCustomerViewModel>();
+                list.Add(new ListCustomerViewModel() 
+                { 
+                    CustomerId = 0,
+                    FullName = "انتخاب کنید",
+                });
+                list.AddRange(db.CustomerRepository.GetNameCustomers());
+                cbCustomer.DataSource = list;
+                cbCustomer.DisplayMember = "FullName";
+                cbCustomer.ValueMember = "CustomerID";
+
+            }
             if (TypeId == 2)
             {
                 this.Text = "گزارش پرداختی ها";
@@ -43,9 +59,22 @@ namespace Accounting.App
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-                var result = db.AccountingRepository.Get(a => a.TypeID == TypeId);
-                //dgReport.AutoGenerateColumns = false;
-                //dgReport.DataSource = result;
+                List<DataLayer.Accounting> result = new List<DataLayer.Accounting>();
+
+
+
+
+                if ((int)cbCustomer.SelectedValue != 0)
+                {
+                    int customerId = int.Parse(cbCustomer.SelectedValue.ToString());
+                    result.AddRange(db.AccountingRepository.Get(a => a.TypeID == TypeId && a.CustomerID == customerId));
+
+                }
+
+                else
+                {
+                    result.AddRange(db.AccountingRepository.Get(a => a.TypeID == TypeId));
+                }
                 dgReport.Rows.Clear();
                 foreach (var accounting in result)
                 {
@@ -90,6 +119,11 @@ namespace Accounting.App
                     Filter();
                 }
             }
+        }
+
+        private void cbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

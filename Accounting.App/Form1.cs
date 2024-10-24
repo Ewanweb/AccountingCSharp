@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounting.Utility.Convertor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,18 @@ namespace Accounting.App
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            this.Hide();
+            frmLogin frm = new frmLogin();
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+                lblDate.Text = DateConvertor.ToShamsi(DateTime.Now);
+                lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+                this.Show();
+            }
+            else
+            {
+                RtlMessageBox.Show("کاربری یافت نشد","خطا",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
@@ -45,6 +58,18 @@ namespace Accounting.App
         {
             frmReport frm = new frmReport();
             frm.TypeId = 1;
+            frm.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void btnLoginSetting_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.IsEdit = true; 
             frm.ShowDialog();
         }
     }
