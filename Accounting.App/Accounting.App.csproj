@@ -231,6 +231,10 @@
     <None Include="Resources\1371476276_Print.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accounting.Buisness\Accounting.Buisness.csproj">
+      <Project>{a015e1b9-b3c3-4d3e-a71c-97d4d05becaf}</Project>
+      <Name>Accounting.Buisness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Accounting.DataLayer\Accounting.DataLayer.csproj">
       <Project>{750498a7-4338-45c5-bd88-5309bfda533e}</Project>
       <Name>Accounting.DataLayer</Name>

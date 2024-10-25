@@ -1,4 +1,5 @@
 ﻿using Accounting.Utility.Convertor;
+using Accounting.Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Accounting.ViewModels.Accounting;
 
 namespace Accounting.App
 {
@@ -25,15 +27,24 @@ namespace Accounting.App
             frmLogin frm = new frmLogin();
             if(frm.ShowDialog() == DialogResult.OK)
             {
+                this.Show();
                 lblDate.Text = DateConvertor.ToShamsi(DateTime.Now);
                 lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
-                this.Show();
+                Report();
             }
             else
             {
                 RtlMessageBox.Show("کاربری یافت نشد","خطا",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Application.Exit();
             }
+        }
+
+        void Report()
+        {
+            reportViewModel report = Account.ReportFormMain();
+            lblPay.Text = report.Pay.ToString("#,0, تومان ");
+            lblRecive.Text = report.Recive.ToString("#,0, تومان ");
+            lblAccountbalance.Text = report.AccountBalance.ToString("#,0, تومان ");
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
@@ -72,6 +83,11 @@ namespace Accounting.App
             frmLogin frm = new frmLogin();
             frm.IsEdit = true; 
             frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Refresh();
         }
     }
 }
