@@ -125,5 +125,24 @@ namespace Accounting.App
         {
 
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dtPrint = new DataTable();
+            dtPrint.Columns.Add("Customer");
+            dtPrint.Columns.Add("Amount");
+            dtPrint.Columns.Add("Date");
+            foreach (DataGridViewRow item in dtPrint.Rows) 
+            { 
+                dtPrint.Rows.Add(
+                    item.Cells[0].Value.ToString(),
+                    item.Cells[1].Value.ToString(),
+                    item.Cells[2].Value.ToString()
+                    );
+            }
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT [MS SQL]", dtPrint);
+            stiPrint.Show();
+        }
     }
 }

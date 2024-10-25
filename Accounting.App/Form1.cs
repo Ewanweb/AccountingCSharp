@@ -32,6 +32,7 @@ namespace Accounting.App
             else
             {
                 RtlMessageBox.Show("کاربری یافت نشد","خطا",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
